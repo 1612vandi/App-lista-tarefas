@@ -2,23 +2,27 @@
 
 class Conexao {
 
-  private $host ='localhost';
-  private $dbname ='bd_lista_tarefa';
-  private $user ='root';
-  private $pass ='';
+	private $host = 'localhost';
+	private $dbname = 'bd_lista_tarefa';
+	private $user = 'root';
+	private $pass = '';
 
-  public function conectar(){
-    try {
-      $conexao = new PDO(
-        "mysql:host=$this->host;dbname=$this->host",
-        "$this->user",
-        "$this->pass"
-      );
-      return $conexao;
+	public function conectar() {
+		try {
 
-    } catch (PDOException $e) {
-      echo '<p>'.$e->getMessege().'/<p>';
-    }
-  }
+			$conexao = new PDO(
+				"mysql:host=$this->host;dbname=$this->dbname",
+				"$this->user",
+				"$this->pass"				
+			);
+
+			return $conexao;
+
+
+		} catch (PDOException $e) {
+			$e->getMessege();
+		}
+	}
 }
+
 ?>

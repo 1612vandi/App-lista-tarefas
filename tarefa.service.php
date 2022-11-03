@@ -1,21 +1,37 @@
 <?php
 
-// crud
-class tarefaService{
 
-  public function inserir(){ // creat
+//CRUD
+class TarefaService {
 
-  }
+	private $conexao;
+	private $tarefa;
 
-  public function recuperar(){ // read
+	public function __construct(Conexao $conexao, Tarefa $tarefa) {
+		$this->conexao = $conexao->conectar();
+		$this->tarefa = $tarefa;
+	}
 
-  }
+	public function inserir() { //create
+		
+		$query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+		$stmt->execute();
 
-  public function actualizar(){ // update
+	}
 
-  }
+	public function recuperar() { //read
 
-  public function remover(){ // delete
+	}
 
-  }
+	public function atualizar() { //update
+
+	}
+
+	public function remover() { //delete
+
+	}
 }
+
+?>
